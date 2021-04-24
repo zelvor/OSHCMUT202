@@ -1,0 +1,16 @@
+QUESTION 1: Compiling a program in the first time usually takes a longer time in comparison with the next re-compiling. What is the reason?
+Trả lời
+Khi biên dịch một chương trình, quá trình này sẽ diễn ra 4 giai đoạn để chuyển đổi từ dịch mã nguồn sang chương trình dạng mã thực thi như sau:
+	Preprocessor->Compiler->Asembler->Linker
+Bởi vì sau lần chạy đầu tiên, chương trình trình đã được biên dịch sang mã máy (.o, .obj), các lần biên dịch sau, chương trình không cần biên dịch sang mã máy nữa nên sẽ nhanh hơn. Nếu chúng ta xóa các file (.o, .obj) đi, việc biên dịch sẽ lại chậm như ban đầu.
+
+
+QUESTION 2: Can we use Makefile for other programming languages?
+Trả lời
+Makefile giống như một công cụ dùng để biên dịch các chương trình một cách nhanh gọn hơn (đối với các project có nhiều file). Bên trong Makefile là tập hợp các lệnh dùng để tạo cũng như xóa đi các file đối tượng, tệp tin nhị phân. Nhưng mỗi ngôn ngữ lập trình có một cách biên dịch, tạo các file đối tượng khác nhau, nên mỗi ngôn ngữ sẽ có các Makefile khác nhau, không thể lấy Makefile cho C/C++ qua áp dụng cho Java, Python, C# được.
+
+QUESTION 3: In case of source code files located in different places, how can we write a Makefile?
+Trả lời
+Nếu các source code được đặt ở các thư mục khác nhau, khi viết Makefile, chúng ta có thể sử dụng đường dẫn, ví dụ: src/lab01/*.c
+
+
