@@ -1,0 +1,3 @@
+Thời gian thực thi của pi_shared và pi_private khá xấp xỉ nhau, nhanh hơn pi_multi-thread và chậm hơn pi_serial của lab trước.
++ pi_private: đảm bảo tính chính xác của thuật toán, tốc độ xử lí cao tuy nhiên sử dụng nhiều vùng bộ nhớ hơn pi_shared.
++ pi_shared: sử dụng ít vùng nhớ hơn pi_private, chỉ sử dụng 1 biến n toàn cục để đếm  tuy nhiên cần sử dụng kĩ thuật mutex để đồng bộ dữ liệu chia sẻ, đảm bảo tính chính xác của thuật toán.

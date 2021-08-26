@@ -1,0 +1,25 @@
+Nguyễn Đăng Hải: 1913254
+Trần Lê Viết Khánh: 1913758
+Nguyễn Văn Minh Hải: 1913260
+Phạm Nhật Minh: 1910346
+
+Group Exercise
+
+Race conditions are possible in many computer systems. Consider a banking system that maintains an account balance with two functions: deposit (amount) and withdraw (amount). These two functions are passed the amount that is to be deposited or withdrawn from the bank account balance. Assume that a hus- band and wife share a bank account. Concurrently, the husband calls the withdraw() function and the wife calls deposit(). Write a short essay listing possible outcomes we could get and pointing out in which situations those outcomes are produced. Then propose some methods that the bank could apply to avoid unexpected results. In addition, please research how race conditions can be controlled in high level programming languages like Java or Python.
+
+Trả lời:
+- Giả sử ban đầu money = 1 000 000 VNĐ. Hàm withdraw() thực hiện rút 500 000 VNĐ, hàm deposit() thực hiện gửi vào số tiền 300 000 VNĐ. Do 2 vợ chồng chia sẻ một tài khoản ngân hàng, khi người chồng gọi hàm withdraw() và người vợ gọi hàm deposit() có thể xảy ra kết quả sau:
+    + Lệnh giảm biến chung - money của hàm withdraw() được thực thi TRƯỚC lệnh tăng biến money của hàm deposit(). Dẫn đến kết quả:
+        . withdraw(): money = 1 000 000 - 500 000 = 500 000 VNĐ.
+        . deposit(): money = 500 000 + 300 000 = 800 000 VNĐ.
+    + Lệnh giảm biến chung - money của hàm withdraw() được thực thi SAU lệnh tăng biến money của hàm deposit(). Dẫn đến kết quả:
+        . deposit(): money = 1 000 000 + 300 000 = 1 300 000 VNĐ.
+        . withdraw(): money = 1 300 000 - 300 000 = 800 000 VNĐ.
+    + Lệnh giảm biến chung - money của hàm withdraw() được thực thi XEN KẼ lệnh tăng biến money của hàm deposit(). Dẫn đến kết quả:
+        . withdraw(): money = 1 000 000 - 500 000 = 500 000 VNĐ.
+        . deposit(): money = 1 000 000 + 300 000 = 1 300 000 VNĐ, do giá trị cân bằng chia sẻ (money) chưa được lưu và cập nhật kịp trước khi hành động deposit() dùng đến nó.
+--> Với 3 trường hợp trên, kết quả kết thúc quá trình của trường hợp thứ 3 bị sai.    
+
+- Để khắc phục được vấn đề này, ngân hàng có thể sử dùng khóa mutex nhằm khóa số dư tài khoản cân bằng khi một tài khoản cố gắng thay đổi nó. Khóa mutex sẽ khóa tất cả các vùng quan trọng (critical section) khác đang cố gắng thay đổi giá trị cân bằng và chỉ mở khóa khi process kết thúc.
+
+Race condition có thể được kiểm soát trong ngôn ngữ lập trình cấp cao như Java hoặc Python bằng cách sử dụng khóa. Ví dụ, khóa được thực hiện bằng cách sử dụng đối tượng Semaphore do Python cấp hoặc synchronized do Java cung cấp.

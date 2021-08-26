@@ -1,0 +1,26 @@
+Nguyễn Đăng Hải: 1913254
+
+Bài 2:
+a, FCFS
+Turnaround time:
+P1: 8
+P2: 11.6
+P3: 12
+
+Average turnaround time: (8+11.6+12) / 3 = 10.533
+
+b, SJF
+Turnaround time:
+P1: 8
+P2: 12.6
+P3: 8
+
+Average turnaround time: (8+12.6+8) / 3 = 9.533
+
+c, Future-knowledge scheduling algorithm:
+Turnaround time:
+P1: 14
+P2: 5.6
+P3: 1
+
+Average turnaround time: (14+5.6+1) / 3 = 6.867

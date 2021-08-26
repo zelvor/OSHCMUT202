@@ -1,0 +1,15 @@
+﻿Nguyễn Đăng Hải: 1913254
+
+Homework Exercise
+
+Consider the page table shown in Figure 3.1 for a system with 12-bit virtual and physical addresses and with 256-byte pages. The list of free page frames is D, E, F (that is, D is at the head of the list, E is second, and F is last). Convert the following virtual addresses to their equivalent physical addresses in hexadecimal. All numbers are given in hexadecimal. (A dash for a page frame indicates that the page is not in memory). Please describe how you find the physical address.
+
+Solution:
+Kích thước của virtual address và physical address là 2^12 = 4096 bytes. Page size = 256 bytes = 2^8. Do đó, 4 bit đầu thể hiện cho page number và 8 bit cuối thể hiện cho page offset.
+
+9EF → 0EF
+111 → 211
+700 → vì D ở đầu list of free page frames → D00
+OFF → E is second → EFF
+3DE → ADE
+7FF → còn F free → FFF

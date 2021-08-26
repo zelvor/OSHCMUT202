@@ -1,0 +1,15 @@
+Nguyễn Đăng Hải: 1913254
+Trần Lê Viết Khánh: 1913758
+Nguyễn Văn Minh Hải: 1913260
+Phạm Nhật Minh: 1910346
+
+1. Describe an example that we need to create a new thread instead of invoking a new process? How about the contrary?
+	- Trường hợp tạo một thread mới thay vì một process mới: khi chúng ta thực hiện các tác vụ I/O, như là truy vấn database, hoặc tải một trang web, CPU không làm gì ngoài việc đợi phản hồi. Multithreading dùng để che dấu độ trễ.
+	
+	- Trường hợp tạo một process mới thay vì một thread mới: Multiprocessing giúp chúng ta làm được nhiều công việc hơn trong khoảng thời gian ngắn hơn, ví dụ như việc tính toán, việc tạo thêm 1 process mới sẽ giúp tăng tốc độ tính toán.
+	
+	
+2. Is multithreading faster than multiprocessing (in case using the same number of threads and processes)?
+	- Trong trường hợp sử dụng cùng số lượng thread và process thì tốc độ của multithreading sẽ chậm hơn multiprocessing. 
+	+ Multithreading: 1 thread chỉ được thực thi tại một thời điểm, thời gian thực hiện sẽ giống với thời gian thực hiện tuần tự cộng thêm thời gian dành để chuyển đổi giữa các thread.
+	+ Multiprocessing: thời gian thực thi của multiprocessing luôn luôn nhanh hơn thời gian thực hiện tuần tự, hay luôn nhanh hơn thời gian multithreading, nếu chúng ta làm đúng (Ví dụ, nếu bạn có 1000 tác vụ cần nhiều CPU và chỉ 4 process, đừng dùng nhiều hơn 4 process, nếu dùng quá 4 process thì chúng sẽ cạnh tranh để dành nguồn lực CPU)
